@@ -3068,18 +3068,89 @@ function TitleScreen({ user }) {
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "absolute inset-0 overflow-hidden pointer-events-none",
                 children: [
-                    ...Array(20)
-                ].map((_, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    {
+                        left: '10%',
+                        top: '20%',
+                        delay: '0s',
+                        duration: '8s'
+                    },
+                    {
+                        left: '25%',
+                        top: '60%',
+                        delay: '1s',
+                        duration: '10s'
+                    },
+                    {
+                        left: '40%',
+                        top: '30%',
+                        delay: '2s',
+                        duration: '7s'
+                    },
+                    {
+                        left: '55%',
+                        top: '70%',
+                        delay: '0.5s',
+                        duration: '12s'
+                    },
+                    {
+                        left: '70%',
+                        top: '15%',
+                        delay: '3s',
+                        duration: '9s'
+                    },
+                    {
+                        left: '85%',
+                        top: '45%',
+                        delay: '1.5s',
+                        duration: '11s'
+                    },
+                    {
+                        left: '15%',
+                        top: '80%',
+                        delay: '2.5s',
+                        duration: '8s'
+                    },
+                    {
+                        left: '60%',
+                        top: '85%',
+                        delay: '4s',
+                        duration: '10s'
+                    },
+                    {
+                        left: '35%',
+                        top: '10%',
+                        delay: '0.8s',
+                        duration: '13s'
+                    },
+                    {
+                        left: '80%',
+                        top: '75%',
+                        delay: '3.5s',
+                        duration: '9s'
+                    },
+                    {
+                        left: '5%',
+                        top: '50%',
+                        delay: '1.2s',
+                        duration: '11s'
+                    },
+                    {
+                        left: '95%',
+                        top: '25%',
+                        delay: '2.8s',
+                        duration: '8s'
+                    }
+                ].map((particle, i)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float",
                         style: {
-                            left: `${Math.random() * 100}%`,
-                            top: `${Math.random() * 100}%`,
-                            animationDelay: `${Math.random() * 5}s`,
-                            animationDuration: `${5 + Math.random() * 10}s`
+                            left: particle.left,
+                            top: particle.top,
+                            animationDelay: particle.delay,
+                            animationDuration: particle.duration
                         }
                     }, i, false, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 51,
+                        lineNumber: 64,
                         columnNumber: 11
                     }, this))
             }, void 0, false, {
@@ -3100,7 +3171,7 @@ function TitleScreen({ user }) {
                                     children: user.name || 'Trader'
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 81,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3108,13 +3179,13 @@ function TitleScreen({ user }) {
                                     children: user.email
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                    lineNumber: 69,
+                                    lineNumber: 82,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/TitleScreen.tsx",
-                            lineNumber: 67,
+                            lineNumber: 80,
                             columnNumber: 11
                         }, this),
                         user.image ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
@@ -3123,7 +3194,7 @@ function TitleScreen({ user }) {
                             className: "w-10 h-10 rounded-full border-2 border-trade-accent"
                         }, void 0, false, {
                             fileName: "[project]/src/components/TitleScreen.tsx",
-                            lineNumber: 72,
+                            lineNumber: 85,
                             columnNumber: 13
                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "w-10 h-10 rounded-full bg-trade-accent flex items-center justify-center",
@@ -3131,12 +3202,12 @@ function TitleScreen({ user }) {
                                 className: "w-5 h-5 text-white"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 75,
+                                lineNumber: 88,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/TitleScreen.tsx",
-                            lineNumber: 74,
+                            lineNumber: 87,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3147,23 +3218,23 @@ function TitleScreen({ user }) {
                                 className: "w-5 h-5"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 83,
+                                lineNumber: 96,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/TitleScreen.tsx",
-                            lineNumber: 78,
+                            lineNumber: 91,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/TitleScreen.tsx",
-                    lineNumber: 66,
+                    lineNumber: 79,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/TitleScreen.tsx",
-                lineNumber: 65,
+                lineNumber: 78,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3178,25 +3249,25 @@ function TitleScreen({ user }) {
                                     className: "w-14 h-14 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                    lineNumber: 94,
+                                    lineNumber: 107,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
                                     className: "w-6 h-6 text-yellow-400 absolute -top-2 -right-2 animate-pulse"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                    lineNumber: 95,
+                                    lineNumber: 108,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/TitleScreen.tsx",
-                            lineNumber: 92,
+                            lineNumber: 105,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 91,
+                        lineNumber: 104,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -3208,13 +3279,13 @@ function TitleScreen({ user }) {
                                 children: "On"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 101,
+                                lineNumber: 114,
                                 columnNumber: 17
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 100,
+                        lineNumber: 113,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3222,7 +3293,7 @@ function TitleScreen({ user }) {
                         children: "Master the Art of Cryptocurrency Trading"
                     }, void 0, false, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 103,
+                        lineNumber: 116,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3236,12 +3307,12 @@ function TitleScreen({ user }) {
                                         className: "w-7 h-7 text-trade-red"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 111,
+                                        lineNumber: 124,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                    lineNumber: 110,
+                                    lineNumber: 123,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3251,7 +3322,7 @@ function TitleScreen({ user }) {
                                             children: "The Stakes Are High"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/TitleScreen.tsx",
-                                            lineNumber: 114,
+                                            lineNumber: 127,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3263,7 +3334,7 @@ function TitleScreen({ user }) {
                                                     children: "$1,000,000"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                                    lineNumber: 116,
+                                                    lineNumber: 129,
                                                     columnNumber: 30
                                                 }, this),
                                                 " from a loan shark to trade cryptocurrency. You have ",
@@ -3272,31 +3343,31 @@ function TitleScreen({ user }) {
                                                     children: "160 turns"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                                    lineNumber: 117,
+                                                    lineNumber: 130,
                                                     columnNumber: 51
                                                 }, this),
                                                 " to pay back the loan and keep whatever profits you make. Don't disappoint the shark..."
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/TitleScreen.tsx",
-                                            lineNumber: 115,
+                                            lineNumber: 128,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/TitleScreen.tsx",
-                                    lineNumber: 113,
+                                    lineNumber: 126,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/TitleScreen.tsx",
-                            lineNumber: 109,
+                            lineNumber: 122,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 108,
+                        lineNumber: 121,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3309,7 +3380,7 @@ function TitleScreen({ user }) {
                                         className: "w-7 h-7 text-yellow-400 mx-auto mb-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 127,
+                                        lineNumber: 140,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3317,13 +3388,13 @@ function TitleScreen({ user }) {
                                         children: "10x Leverage"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 128,
+                                        lineNumber: 141,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 126,
+                                lineNumber: 139,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3333,7 +3404,7 @@ function TitleScreen({ user }) {
                                         className: "w-7 h-7 text-purple-400 mx-auto mb-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 131,
+                                        lineNumber: 144,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3341,13 +3412,13 @@ function TitleScreen({ user }) {
                                         children: "6 Cryptos"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 132,
+                                        lineNumber: 145,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 130,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3357,7 +3428,7 @@ function TitleScreen({ user }) {
                                         className: "w-7 h-7 text-trade-green mx-auto mb-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 148,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3365,19 +3436,19 @@ function TitleScreen({ user }) {
                                         children: "Leaderboard"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 136,
+                                        lineNumber: 149,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 134,
+                                lineNumber: 147,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 125,
+                        lineNumber: 138,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3391,7 +3462,7 @@ function TitleScreen({ user }) {
                                         className: "w-6 h-6"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 150,
+                                        lineNumber: 163,
                                         columnNumber: 13
                                     }, this),
                                     "Start New Game",
@@ -3399,13 +3470,13 @@ function TitleScreen({ user }) {
                                         className: "absolute inset-0 rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 152,
+                                        lineNumber: 165,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 143,
+                                lineNumber: 156,
                                 columnNumber: 11
                             }, this),
                             hasSavedGame() && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3416,20 +3487,20 @@ function TitleScreen({ user }) {
                                         className: "w-5 h-5"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/TitleScreen.tsx",
-                                        lineNumber: 164,
+                                        lineNumber: 177,
                                         columnNumber: 15
                                     }, this),
                                     "Resume Saved Game"
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/TitleScreen.tsx",
-                                lineNumber: 157,
+                                lineNumber: 170,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 141,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3437,13 +3508,13 @@ function TitleScreen({ user }) {
                         children: "Use your skills to trade Bitcoin, Ethereum, and more. Good luck, trader!"
                     }, void 0, false, {
                         fileName: "[project]/src/components/TitleScreen.tsx",
-                        lineNumber: 170,
+                        lineNumber: 183,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/TitleScreen.tsx",
-                lineNumber: 89,
+                lineNumber: 102,
                 columnNumber: 7
             }, this)
         ]

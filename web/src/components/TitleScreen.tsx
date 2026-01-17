@@ -45,17 +45,30 @@ export default function TitleScreen({ user }: TitleScreenProps) {
         <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-trade-green/10 rounded-full blur-[80px] animate-pulse" />
       </div>
 
-      {/* Floating particles */}
+      {/* Floating particles - using fixed positions to avoid hydration mismatch */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[
+          { left: '10%', top: '20%', delay: '0s', duration: '8s' },
+          { left: '25%', top: '60%', delay: '1s', duration: '10s' },
+          { left: '40%', top: '30%', delay: '2s', duration: '7s' },
+          { left: '55%', top: '70%', delay: '0.5s', duration: '12s' },
+          { left: '70%', top: '15%', delay: '3s', duration: '9s' },
+          { left: '85%', top: '45%', delay: '1.5s', duration: '11s' },
+          { left: '15%', top: '80%', delay: '2.5s', duration: '8s' },
+          { left: '60%', top: '85%', delay: '4s', duration: '10s' },
+          { left: '35%', top: '10%', delay: '0.8s', duration: '13s' },
+          { left: '80%', top: '75%', delay: '3.5s', duration: '9s' },
+          { left: '5%', top: '50%', delay: '1.2s', duration: '11s' },
+          { left: '95%', top: '25%', delay: '2.8s', duration: '8s' },
+        ].map((particle, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${5 + Math.random() * 10}s`,
+              left: particle.left,
+              top: particle.top,
+              animationDelay: particle.delay,
+              animationDuration: particle.duration,
             }}
           />
         ))}
