@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 58, "column": 0}, "map": {"version":3,"sources":["file:///Users/nayburrahman/Downloads/TradeOn/web/src/auth.ts"],"sourcesContent":["import NextAuth from \"next-auth\";\nimport Google from \"next-auth/providers/google\";\n\nexport const { handlers, signIn, signOut, auth } = NextAuth({\n  providers: [\n    Google({\n      clientId: process.env.GOOGLE_CLIENT_ID,\n      clientSecret: process.env.GOOGLE_CLIENT_SECRET,\n    }),\n  ],\n  pages: {\n    signIn: \"/login\",\n  },\n  callbacks: {\n    async session({ session, token }) {\n      if (session.user && token.sub) {\n        session.user.id = token.sub;\n      }\n      return session;\n    },\n  },\n});\n"],"names":[],"mappings":";;;;;;;;;;AAAA;AACA;AAAA;;;AAEO,MAAM,EAAE,QAAQ,EAAE,MAAM,EAAE,OAAO,EAAE,IAAI,EAAE,GAAG,IAAA,kKAAQ,EAAC;IAC1D,WAAW;QACT,IAAA,kKAAM,EAAC;YACL,UAAU,QAAQ,GAAG,CAAC,gBAAgB;YACtC,cAAc,QAAQ,GAAG,CAAC,oBAAoB;QAChD;KACD;IACD,OAAO;QACL,QAAQ;IACV;IACA,WAAW;QACT,MAAM,SAAQ,EAAE,OAAO,EAAE,KAAK,EAAE;YAC9B,IAAI,QAAQ,IAAI,IAAI,MAAM,GAAG,EAAE;gBAC7B,QAAQ,IAAI,CAAC,EAAE,GAAG,MAAM,GAAG;YAC7B;YACA,OAAO;QACT;IACF;AACF"}},
+    {"offset": {"line": 96, "column": 0}, "map": {"version":3,"sources":["file:///Users/nayburrahman/Downloads/TradeOn/web/src/app/api/auth/%5B...nextauth%5D/route.ts"],"sourcesContent":["import { handlers } from \"@/auth\";\n\nexport const { GET, POST } = handlers;\n"],"names":[],"mappings":";;;;;;AAAA;;AAEO,MAAM,EAAE,GAAG,EAAE,IAAI,EAAE,GAAG,yHAAQ"}}]
+}
