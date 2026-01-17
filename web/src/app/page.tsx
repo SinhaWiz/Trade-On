@@ -5,9 +5,9 @@ import GameClient from "./GameClient";
 export default async function Home() {
   const session = await auth();
 
-  if (!session?.user) {
-    redirect("/login");
-  }
+  // For demo mode, we'll handle it client-side in GameClient
+  // If no session, still render GameClient which will check for demo mode
+  const user = session?.user || null;
 
-  return <GameClient user={session.user} />;
+  return <GameClient user={user} />;
 }

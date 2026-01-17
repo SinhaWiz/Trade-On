@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { Coin } from '@/lib/types';
 import Header from '@/components/Header';
 import MarketTable from '@/components/MarketTable';
@@ -19,12 +20,38 @@ interface GameClientProps {
     name?: string | null;
     email?: string | null;
     image?: string | null;
-  };
+  } | null;
 }
 
-export default function GameClient({ user }: GameClientProps) {
+export default function GameClient({ user: serverUser }: GameClientProps) {
   const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null);
+  const [user, setUser] = useState(serverUser);
   const { isGameStarted } = useGameStore();
+  const router = useRouter();
+
+  // Check for demo user on mount
+  useEffect(() => {
+    if (!serverUser) {
+      const demoUser = localStorage.getItem('demo-user');
+      if (demoUser) {
+        setUser(JSON.parse(demoUser));
+      } else {
+        router.push('/login');
+      }
+    }
+  }, [serverUser, router]);
+
+  // Show loading state while checking authentication
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-trade-dark flex items-center justify-center">
+        <div className="text-center">
+          <div className="w-16 h-16 border-4 border-trade-accent border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-gray-400">Loading...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-trade-dark">

@@ -3,6 +3,7 @@
 import { useGameStore } from '@/lib/gameStore';
 import { TrendingUp, Zap, Target, Skull, Play, RotateCcw, User, LogOut, Sparkles, Trophy } from 'lucide-react';
 import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 interface TitleScreenProps {
   user: {
@@ -14,6 +15,7 @@ interface TitleScreenProps {
 
 export default function TitleScreen({ user }: TitleScreenProps) {
   const { isGameStarted, startNewGame, hasSavedGame, resumeGame } = useGameStore();
+  const router = useRouter();
 
   if (isGameStarted) return null;
 
@@ -26,7 +28,12 @@ export default function TitleScreen({ user }: TitleScreenProps) {
   };
 
   const handleSignOut = () => {
+    // Clear demo user if exists
+    localStorage.removeItem('demo-user');
+    // Sign out from NextAuth (will handle both demo and real users)
     signOut({ callbackUrl: '/login' });
+    // Also redirect directly for demo users
+    router.push('/login');
   };
 
   return (
