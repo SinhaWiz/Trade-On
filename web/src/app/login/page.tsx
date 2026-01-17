@@ -1,11 +1,24 @@
 'use client';
 
 import { signIn } from "next-auth/react";
-import { TrendingUp, LogIn, Sparkles } from 'lucide-react';
+import { useRouter } from "next/navigation";
+import { TrendingUp, LogIn, Sparkles, Play } from 'lucide-react';
 
 export default function LoginPage() {
+  const router = useRouter();
+
   const handleGoogleSignIn = () => {
     signIn("google", { callbackUrl: "/" });
+  };
+
+  const handleDemoMode = () => {
+    // Store demo user in localStorage
+    localStorage.setItem('demo-user', JSON.stringify({
+      name: 'Demo Trader',
+      email: 'demo@trade-on.game',
+      image: null,
+    }));
+    router.push('/');
   };
 
   return (
@@ -42,6 +55,27 @@ export default function LoginPage() {
               Welcome to the ultimate crypto trading experience. Sign in to start your journey from 
               <span className="text-trade-green font-semibold"> $1,000,000</span> to legendary trader status.
             </p>
+          </div>
+
+          {/* Demo Mode Button - Primary action for now */}
+          <button
+            onClick={handleDemoMode}
+            className="w-full flex items-center justify-center gap-3 py-4 px-6 mb-4
+              bg-gradient-to-r from-trade-accent to-purple-500 hover:from-trade-accent/90 hover:to-purple-500/90
+              text-white font-semibold rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl
+              hover:scale-[1.02] active:scale-[0.98]"
+          >
+            <Play className="w-5 h-5" />
+            <span>Play Now (Demo Mode)</span>
+          </button>
+
+          <div className="relative my-6">
+            <div className="absolute inset-0 flex items-center">
+              <div className="w-full border-t border-trade-border"></div>
+            </div>
+            <div className="relative flex justify-center text-sm">
+              <span className="px-4 bg-trade-card text-gray-500">or sign in with</span>
+            </div>
           </div>
 
           {/* Google Sign In Button */}
