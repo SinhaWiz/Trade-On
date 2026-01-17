@@ -472,6 +472,11 @@ img, video {
   margin-right: auto;
 }
 
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
 .mb-10 {
   margin-bottom: 2.5rem;
 }
@@ -624,6 +629,10 @@ img, video {
   height: 100%;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -700,6 +709,10 @@ img, video {
   width: 100%;
 }
 
+.w-16 {
+  width: 4rem;
+}
+
 .min-w-\[120px\] {
   min-width: 120px;
 }
@@ -772,6 +785,16 @@ img, video {
 
 .animate-pulse-slow {
   animation: 3s cubic-bezier(.4, 0, .6, 1) infinite pulse;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: 1s linear infinite spin;
 }
 
 .cursor-not-allowed {
@@ -928,6 +951,10 @@ img, video {
   border-width: 2px;
 }
 
+.border-4 {
+  border-width: 4px;
+}
+
 .border-b {
   border-bottom-width: 1px;
 }
@@ -990,6 +1017,10 @@ img, video {
 .border-l-trade-accent {
   --tw-border-opacity: 1;
   border-left-color: rgb(88 166 255 / var(--tw-border-opacity, 1));
+}
+
+.border-t-transparent {
+  border-top-color: #0000;
 }
 
 .bg-black\/60 {
@@ -1814,6 +1845,16 @@ input[type="range"] {
 
 .hover\:bg-trade-red\/80:hover {
   background-color: #ff1744cc;
+}
+
+.hover\:from-trade-accent\/90:hover {
+  --tw-gradient-from: #58a6ffe6 var(--tw-gradient-from-position);
+  --tw-gradient-to: #58a6ff00 var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.hover\:to-purple-500\/90:hover {
+  --tw-gradient-to: #a855f7e6 var(--tw-gradient-to-position);
 }
 
 .hover\:text-purple-400:hover {

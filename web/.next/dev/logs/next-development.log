@@ -1,3 +1,8 @@
 [00:00:00.752] Server  LOG     ✓ Ready in 458ms
 [00:00:43.879] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
 [00:02:48.120] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:49.953] Server  LOG     ✓ Compiled in 34ms
+[00:05:28.080] Server  LOG     ✓ Compiled in 51ms
+[00:10:18.729] Server  ERROR   (node:26514) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+[00:10:18.851] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
