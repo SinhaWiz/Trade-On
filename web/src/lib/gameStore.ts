@@ -30,6 +30,11 @@ interface GameStore extends GameState {
   removeNotification: (id: string) => void;
   clearNotifications: () => void;
   resetGame: () => void;
+  // Save/Load/Quit
+  saveGame: () => void;
+  resumeGame: () => void;
+  quitToTitle: () => void;
+  hasSavedGame: () => boolean;
 }
 
 const initializeCoins = (): Coin[] => {
@@ -316,10 +321,34 @@ export const useGameStore = create<GameStore>()(
       resetGame: () => {
         set(initialState);
       },
+
+      saveGame: () => {
+        // The persist middleware automatically saves to localStorage
+        // We just need to trigger a notification
+        get().addNotification('success', '💾 Game saved successfully!');
+      },
+
+      resumeGame: () => {
+        // The persist middleware automatically loads from localStorage
+        // Just mark the game as started
+        set({ isGameStarted: true });
+        get().addNotification('info', '🎮 Welcome back! Resuming your saved game...');
+      },
+
+      quitToTitle: () => {
+        // Don't reset the game state, just go back to title
+        set({ isGameStarted: false, notifications: [] });
+      },
+
+      hasSavedGame: () => {
+        const state = get();
+        // Check if there's meaningful progress (not at initial state)
+        return state.turnsRemaining < MAX_TURNS || state.positions.length > 0 || state.player.balance !== INITIAL_BALANCE;
+      },
     }),
     {
       name: 'trade-on-game',
-      partialize: (state) => ({
+      partialize: (state: GameState) => ({
         player: state.player,
         coins: state.coins,
         positions: state.positions,

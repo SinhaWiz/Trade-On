@@ -1,33 +1,16 @@
-'use client';
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
+import GameClient from "./GameClient";
 
-import { useState } from 'react';
-import { Coin } from '@/lib/types';
-import Header from '@/components/Header';
-import MarketTable from '@/components/MarketTable';
-import TradePanel from '@/components/TradePanel';
-import PositionsPanel from '@/components/PositionsPanel';
-import PriceChart from '@/components/PriceChart';
-import Notifications from '@/components/Notifications';
-import ActionPanel from '@/components/ActionPanel';
-import GameOverModal from '@/components/GameOverModal';
-import StartMenu from '@/components/StartMenu';
+export default async function Home() {
+  const session = await auth();
 
-export default function Home() {
-  const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null);
+  if (!session?.user) {
+    redirect("/login");
+  }
 
-  return (
-    <main className="min-h-screen bg-trade-dark">
-      {/* Start Menu Overlay */}
-      <StartMenu />
-      
-      {/* Game Over Modal */}
-      <GameOverModal />
-
-      {/* Notifications */}
-      <Notifications />
-
-      {/* Header */}
-      <Header />
+  return <GameClient user={session.user} />;
+}
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-6">
