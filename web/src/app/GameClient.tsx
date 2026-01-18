@@ -8,6 +8,7 @@ import MarketTable from '@/components/MarketTable';
 import TradePanel from '@/components/TradePanel';
 import PositionsPanel from '@/components/PositionsPanel';
 import PriceChart from '@/components/PriceChart';
+import AllCoinsChart from '@/components/AllCoinsChart';
 import Notifications from '@/components/Notifications';
 import ActionPanel from '@/components/ActionPanel';
 import GameOverModal from '@/components/GameOverModal';
@@ -104,8 +105,14 @@ export default function GameClient({ user: serverUser }: GameClientProps) {
             {/* Positions */}
             <PositionsPanel />
 
-            {/* Price Chart */}
-            <PriceChart coin={selectedCoin} />
+            {/* Charts - Side by Side */}
+            <div className="grid grid-cols-2 gap-6">
+              {/* Selected Coin Chart */}
+              <PriceChart coin={selectedCoin} />
+              
+              {/* All Coins Chart */}
+              <AllCoinsChart />
+            </div>
           </div>
 
           {/* Right Column - Trade Panel & Actions */}
