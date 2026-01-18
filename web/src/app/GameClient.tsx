@@ -101,11 +101,11 @@ export default function GameClient({ user: serverUser }: GameClientProps) {
               selectedCoin={selectedCoin} 
             />
 
-            {/* Price Chart */}
-            <PriceChart coin={selectedCoin} />
-
             {/* Positions */}
             <PositionsPanel />
+
+            {/* Price Chart */}
+            <PriceChart coin={selectedCoin} />
           </div>
 
           {/* Right Column - Trade Panel & Actions */}
