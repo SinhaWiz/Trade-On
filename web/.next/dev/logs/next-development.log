@@ -1,10 +1,68 @@
-[00:00:00.759] Server  LOG     ✓ Ready in 447ms
-[00:00:03.804] Server  LOG     ○ Compiling / ...
-[00:00:04.844] Server  ERROR   (node:38487) Warning: `--localstorage-file` was provided without a valid path
+[00:00:00.693] Server  LOG     ✓ Ready in 426ms
+[00:00:03.000] Server  ERROR   (node:40373) Warning: `--localstorage-file` was provided without a valid path
 (Use `node --trace-warnings ...` to show where the warning was created)
-[00:00:05.061] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:31.829] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:35.688] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
-[00:00:35.696] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
-[00:00:45.459] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:45.560] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[00:00:03.158] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:03.311] Server  LOG     MongoDB URI found, connecting to Atlas...
+[00:00:03.313] Server  LOG     Creating new MongoDB connection...
+[00:00:10.372] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <button> button 
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+          <SegmentViewNode type="page" pagePath="page.tsx">
+            <SegmentTrieNode>
+            <Home>
+              <GameClient user={{name:"128_...", ...}}>
+                <main className="min-h-scre...">
+                  <PlayerMenu user={{name:"128_...", ...}}>
+                    <div className="fixed inse...">
+                      <div>
+                      <div>
+                      <div className="relative z...">
+                        <div className="grid grid-...">
+                          <div>
+                          <div className="col-span-4...">
+                            <div className="bg-trade-c...">
+                              <h2>
+                              <div className="space-y-3 ...">
+>                               <button
+>                                 onClick={function onClick}
+>                                 className="w-full bg-trade-dark/50 border border-trade-border/50 rounded-xl p-4  hov..."
+>                               >
+                                  <div className="flex items...">
+                                    <span>
+>                                   <button
+>                                     onClick={function onClick}
+>                                     className="p-1.5 rounded-lg hover:bg-trade-red/20 text-gray-500 hover:text-trade..."
+>                                   >
+                                  ...
+                            ...
+                          ...
+                  ...
+          ...
+        ...
+
+[00:00:10.372] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. button <button>
+[00:01:03.381] Server  LOG     ✓ Compiled in 552ms
+[00:03:05.585] Server  LOG     ✓ Compiled in 39ms
+[00:03:09.865] Server  LOG     ✓ Compiled in 154ms
+[00:03:14.649] Server  LOG     ✓ Compiled in 171ms
+[00:03:27.074] Server  LOG     ✓ Compiled in 221ms
+[00:03:45.076] Server  LOG     ✓ Compiled in 28ms
+[00:03:50.834] Server  LOG     ✓ Compiled in 28ms
+[00:04:17.126] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:22.049] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:30.766] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:11:15.383] Server  LOG     ✓ Compiled in 37ms
+[00:11:15.475] Browser ERROR   uncaughtError: ReferenceError: setSelectedCoin is not defined
+[00:11:19.495] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:11:19.586] Server  LOG     ✓ Compiled in 32ms
+[00:11:19.884] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:14.396] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:34.802] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:12:44.503] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:40.670] Server  LOG     ✓ Compiled in 24ms
+[00:14:57.280] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

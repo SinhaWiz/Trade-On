@@ -667,6 +667,10 @@ img, video {
   width: 100%;
 }
 
+.w-px {
+  width: 1px;
+}
+
 .min-w-0 {
   min-width: 0;
 }
@@ -986,6 +990,10 @@ img, video {
   border-color: #ff17444d;
 }
 
+.border-trade-red\/50 {
+  border-color: #ff174480;
+}
+
 .border-yellow-400\/30 {
   border-color: #facc154d;
 }
@@ -1078,6 +1086,11 @@ img, video {
 
 .bg-trade-accent\/30 {
   background-color: #58a6ff4d;
+}
+
+.bg-trade-border {
+  --tw-bg-opacity: 1;
+  background-color: rgb(48 54 61 / var(--tw-bg-opacity, 1));
 }
 
 .bg-trade-card {
@@ -1840,6 +1853,10 @@ input[type="range"] {
   background-color: #00c8531a;
 }
 
+.hover\:bg-trade-green\/30:hover {
+  background-color: #00c8534d;
+}
+
 .hover\:bg-trade-green\/80:hover {
   background-color: #00c853cc;
 }
@@ -1850,6 +1867,10 @@ input[type="range"] {
 
 .hover\:bg-trade-red\/20:hover {
   background-color: #ff174433;
+}
+
+.hover\:bg-trade-red\/30:hover {
+  background-color: #ff17444d;
 }
 
 .hover\:bg-trade-red\/80:hover {

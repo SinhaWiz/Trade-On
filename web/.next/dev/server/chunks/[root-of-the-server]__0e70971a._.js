@@ -54,7 +54,9 @@ var __TURBOPACK__imported__module__$5b$externals$5d2f$mongodb__$5b$external$5d$_
 ;
 const uri = process.env.MONGODB_URI;
 if (!uri) {
-    console.error('MONGODB_URI is not defined in environment variables');
+    console.error('MONGODB_URI is not defined in environment variables. Value:', uri);
+} else {
+    console.log('MongoDB URI found, connecting to Atlas...');
 }
 const options = {};
 let clientPromise;
@@ -62,13 +64,16 @@ function getMongoClient() {
     if (!uri) {
         throw new Error('Please add your MONGODB_URI to .env.local');
     }
+    console.log('Creating new MongoDB connection...');
     const client = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongodb__$5b$external$5d$__$28$mongodb$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f$mongodb$29$__["MongoClient"](uri, options);
     return client.connect();
 }
 if ("TURBOPACK compile-time truthy", 1) {
     // In development mode, use a global variable so that the value
     // is preserved across module reloads caused by HMR (Hot Module Replacement).
-    if (!global._mongoClientPromise) {
+    // Reset if URI changed
+    if (!global._mongoClientPromise || global._mongoUri !== uri) {
+        global._mongoUri = uri;
         global._mongoClientPromise = getMongoClient();
     }
     clientPromise = global._mongoClientPromise;

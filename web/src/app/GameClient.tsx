@@ -24,11 +24,21 @@ interface GameClientProps {
 }
 
 export default function GameClient({ user: serverUser }: GameClientProps) {
-  const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null);
+  const [selectedCoinTicker, setSelectedCoinTicker] = useState<string | null>(null);
   const [user, setUser] = useState(serverUser);
-  const { isGameStarted, quitToTitle } = useGameStore();
+  const { isGameStarted, quitToTitle, coins } = useGameStore();
   const router = useRouter();
   const hasInitialized = useRef(false);
+
+  // Get the selected coin from the store (always up-to-date)
+  const selectedCoin = selectedCoinTicker 
+    ? coins.find(c => c.ticker === selectedCoinTicker) || null 
+    : null;
+
+  // Handler to set selected coin by ticker
+  const handleSelectCoin = (coin: Coin | null) => {
+    setSelectedCoinTicker(coin?.ticker || null);
+  };
 
   // Check for demo user on mount and show player menu
   useEffect(() => {
@@ -39,15 +49,16 @@ export default function GameClient({ user: serverUser }: GameClientProps) {
       const demoUser = localStorage.getItem('demo-user');
       if (demoUser) {
         setUser(JSON.parse(demoUser));
-        // Go to player menu (quit any active game)
-        quitToTitle();
-      } else {
-        router.push('/login');
       }
-    } else {
-      // Show player menu for authenticated users on page load
-      quitToTitle();
+      // Always redirect to login if no server user - let them choose demo or Google
+      // Only skip if demo user exists
+      if (!demoUser) {
+        router.push('/login');
+        return;
+      }
     }
+    // Always show player menu on page load (not the game directly)
+    quitToTitle();
   }, [serverUser, router, quitToTitle]);
 
   // Show loading state while checking authentication
@@ -86,7 +97,7 @@ export default function GameClient({ user: serverUser }: GameClientProps) {
           <div className="col-span-8 space-y-6">
             {/* Market Table */}
             <MarketTable 
-              onSelectCoin={setSelectedCoin} 
+              onSelectCoin={handleSelectCoin} 
               selectedCoin={selectedCoin} 
             />
 

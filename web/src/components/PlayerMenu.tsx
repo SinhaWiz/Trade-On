@@ -56,7 +56,9 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
   }, [user.email, user.name, user.image, loadProfile]);
 
   const handleSignOut = () => {
+    // Clear all stored data
     localStorage.removeItem('demo-user');
+    localStorage.removeItem('trade-on-game');
     signOut({ callbackUrl: '/login' });
     router.push('/login');
   };
@@ -237,11 +239,11 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                 ) : (
                   <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
                     {savedGames.map((save) => (
-                      <button
+                      <div
                         key={save.id}
                         onClick={() => handleLoadGame(save)}
                         className="w-full bg-trade-dark/50 border border-trade-border/50 rounded-xl p-4 
-                          hover:border-purple-500/50 hover:bg-trade-dark/70 transition-all group text-left"
+                          hover:border-purple-500/50 hover:bg-trade-dark/70 transition-all group text-left cursor-pointer"
                       >
                         <div className="flex items-start justify-between mb-2">
                           <span className="font-medium text-white group-hover:text-purple-400 transition-colors">
@@ -267,7 +269,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                         <p className="text-xs text-gray-500 mt-2">
                           {formatDate(save.updatedAt)}
                         </p>
-                      </button>
+                      </div>
                     ))}
                   </div>
                 )}
