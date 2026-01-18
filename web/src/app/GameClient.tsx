@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Coin } from '@/lib/types';
 import Header from '@/components/Header';
@@ -26,25 +26,29 @@ interface GameClientProps {
 export default function GameClient({ user: serverUser }: GameClientProps) {
   const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null);
   const [user, setUser] = useState(serverUser);
-  const { isGameStarted, resetGame } = useGameStore();
+  const { isGameStarted, quitToTitle } = useGameStore();
   const router = useRouter();
+  const hasInitialized = useRef(false);
 
-  // Check for demo user on mount and reset game state
+  // Check for demo user on mount and show player menu
   useEffect(() => {
+    if (hasInitialized.current) return;
+    hasInitialized.current = true;
+
     if (!serverUser) {
       const demoUser = localStorage.getItem('demo-user');
       if (demoUser) {
         setUser(JSON.parse(demoUser));
-        // Reset game to show player menu
-        resetGame();
+        // Go to player menu (quit any active game)
+        quitToTitle();
       } else {
         router.push('/login');
       }
     } else {
-      // Reset game state for authenticated users to show player menu
-      resetGame();
+      // Show player menu for authenticated users on page load
+      quitToTitle();
     }
-  }, [serverUser, router, resetGame]);
+  }, [serverUser, router, quitToTitle]);
 
   // Show loading state while checking authentication
   if (!user) {

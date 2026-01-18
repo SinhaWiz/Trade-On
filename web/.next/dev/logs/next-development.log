@@ -1,1 +1,10 @@
-[00:00:00.854] Server  LOG     ✓ Ready in 544ms
+[00:00:00.759] Server  LOG     ✓ Ready in 447ms
+[00:00:03.804] Server  LOG     ○ Compiling / ...
+[00:00:04.844] Server  ERROR   (node:38487) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+[00:00:05.061] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:31.829] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:35.688] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[00:00:35.696] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[00:00:45.459] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:45.560] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017

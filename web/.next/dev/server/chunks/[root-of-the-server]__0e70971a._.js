@@ -52,19 +52,24 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$externals$5d2f$mongodb__$5b$external$5d$__$28$mongodb$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f$mongodb$29$__ = __turbopack_context__.i("[externals]/mongodb [external] (mongodb, cjs, [project]/node_modules/mongodb)");
 ;
-if (!process.env.MONGODB_URI) {
-    throw new Error('Please add your MONGODB_URI to .env.local');
-}
 const uri = process.env.MONGODB_URI;
+if (!uri) {
+    console.error('MONGODB_URI is not defined in environment variables');
+}
 const options = {};
-let client;
 let clientPromise;
+function getMongoClient() {
+    if (!uri) {
+        throw new Error('Please add your MONGODB_URI to .env.local');
+    }
+    const client = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongodb__$5b$external$5d$__$28$mongodb$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f$mongodb$29$__["MongoClient"](uri, options);
+    return client.connect();
+}
 if ("TURBOPACK compile-time truthy", 1) {
     // In development mode, use a global variable so that the value
     // is preserved across module reloads caused by HMR (Hot Module Replacement).
     if (!global._mongoClientPromise) {
-        client = new __TURBOPACK__imported__module__$5b$externals$5d2f$mongodb__$5b$external$5d$__$28$mongodb$2c$__cjs$2c$__$5b$project$5d2f$node_modules$2f$mongodb$29$__["MongoClient"](uri, options);
-        global._mongoClientPromise = client.connect();
+        global._mongoClientPromise = getMongoClient();
     }
     clientPromise = global._mongoClientPromise;
 } else //TURBOPACK unreachable
