@@ -1,315 +1,94 @@
-[00:00:00.584] Server  LOG     ✓ Ready in 342ms
-[00:00:19.900] Server  ERROR   (node:28291) Warning: `--localstorage-file` was provided without a valid path
+[00:00:00.790] Server  LOG     ✓ Ready in 462ms
+[00:00:11.651] Server  ERROR   (node:29659) Warning: `--localstorage-file` was provided without a valid path
 (Use `node --trace-warnings ...` to show where the warning was created)
-[00:00:20.044] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:33.826] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:34.000] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-https://react.dev/link/hydration-mismatch
-
-  ...
-    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-      <LoadingBoundary name="/" loading={null}>
-        <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
-          <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
-            <RedirectBoundary>
-              <RedirectErrorBoundary router={{...}}>
-                <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
-                  <SegmentViewNode type="page" pagePath="page.tsx">
-                    <SegmentTrieNode>
-                    <Home>
-                      <GameClient user={{name:"128_...", ...}}>
-                        <main className="min-h-scre...">
-                          <TitleScreen user={{name:"128_...", ...}}>
-                            <div className="fixed inse...">
-                              <div>
-                              <div className="absolute i...">
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "32.13540170999032%"
--                                   left: "24.0054%"
-+                                   top: "47.930142113378736%"
--                                   top: "8.60383%"
-+                                   animationDelay: "3.5340145882777523s"
-+                                   animationDuration: "13.198864607366364s"
--                                   animation-delay: "1.43075s"
--                                   animation-duration: "11.2141s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "51.6424522330073%"
--                                   left: "69.758%"
-+                                   top: "57.113013039235284%"
--                                   top: "60.667%"
-+                                   animationDelay: "3.2274125219525747s"
-+                                   animationDuration: "6.060810294656641s"
--                                   animation-delay: "1.59283s"
--                                   animation-duration: "7.62293s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "34.32191506928879%"
--                                   left: "34.0251%"
-+                                   top: "4.268315718305904%"
--                                   top: "50.1363%"
-+                                   animationDelay: "4.171861728329945s"
-+                                   animationDuration: "11.14233405464209s"
--                                   animation-delay: "2.19883s"
--                                   animation-duration: "11.1697s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "82.32579950238717%"
--                                   left: "86.1862%"
-+                                   top: "66.08160616969322%"
--                                   top: "45.1085%"
-+                                   animationDelay: "1.2672389928410621s"
-+                                   animationDuration: "11.311431267970836s"
--                                   animation-delay: "2.88702s"
--                                   animation-duration: "14.3314s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "98.95216357587508%"
--                                   left: "65.9888%"
-+                                   top: "52.736066084417565%"
--                                   top: "9.90909%"
-+                                   animationDelay: "3.8224886215762393s"
-+                                   animationDuration: "8.476463687993357s"
--                                   animation-delay: "4.09667s"
--                                   animation-duration: "14.3749s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "78.87431767923826%"
--                                   left: "61.7529%"
-+                                   top: "47.59262691992344%"
--                                   top: "78.6203%"
-+                                   animationDelay: "2.610646611058311s"
-+                                   animationDuration: "11.357665503127173s"
--                                   animation-delay: "1.01558s"
--                                   animation-duration: "7.65175s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "41.65345792604129%"
--                                   left: "46.6415%"
-+                                   top: "20.687293847437584%"
--                                   top: "3.2037%"
-+                                   animationDelay: "0.5183781796750536s"
-+                                   animationDuration: "9.034237010513582s"
--                                   animation-delay: "2.45141s"
--                                   animation-duration: "7.7003s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "90.11131056538333%"
--                                   left: "58.4731%"
-+                                   top: "11.271293330922783%"
--                                   top: "52.3333%"
-+                                   animationDelay: "3.0726393478502696s"
-+                                   animationDuration: "6.72573647299901s"
--                                   animation-delay: "2.40331s"
--                                   animation-duration: "12.3591s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "43.14269866115169%"
--                                   left: "0.677917%"
-+                                   top: "12.578551584633912%"
--                                   top: "28.972%"
-+                                   animationDelay: "2.458202959083245s"
-+                                   animationDuration: "5.430992054315374s"
--                                   animation-delay: "3.12592s"
--                                   animation-duration: "14.1322s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "29.674318299615155%"
--                                   left: "50.6698%"
-+                                   top: "8.126870738117065%"
--                                   top: "58.3993%"
-+                                   animationDelay: "0.013070925071188566s"
-+                                   animationDuration: "8.985775049885856s"
--                                   animation-delay: "4.31124s"
--                                   animation-duration: "9.77682s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "81.45633592020295%"
--                                   left: "14.3004%"
-+                                   top: "43.77947778505092%"
--                                   top: "86.7879%"
-+                                   animationDelay: "4.678422773030113s"
-+                                   animationDuration: "9.888907484162354s"
--                                   animation-delay: "1.51986s"
--                                   animation-duration: "6.78546s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "66.17163698110988%"
--                                   left: "98.4053%"
-+                                   top: "98.45955559573092%"
--                                   top: "55.3973%"
-+                                   animationDelay: "3.601138547607812s"
-+                                   animationDuration: "14.407897837101656s"
--                                   animation-delay: "4.60685s"
--                                   animation-duration: "8.83676s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "93.13928665809044%"
--                                   left: "24.0321%"
-+                                   top: "32.970122009119386%"
--                                   top: "74.0379%"
-+                                   animationDelay: "0.6220606849971766s"
-+                                   animationDuration: "6.644714333321869s"
--                                   animation-delay: "0.878423s"
--                                   animation-duration: "10.9787s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "61.29813982114896%"
--                                   left: "97.6066%"
-+                                   top: "58.62710629063667%"
--                                   top: "32.6202%"
-+                                   animationDelay: "4.661621386961112s"
-+                                   animationDuration: "6.183062079080424s"
--                                   animation-delay: "4.28022s"
--                                   animation-duration: "11.7029s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "6.880019673740412%"
--                                   left: "5.83234%"
-+                                   top: "74.38685529552878%"
--                                   top: "14.4965%"
-+                                   animationDelay: "4.068383871922433s"
-+                                   animationDuration: "14.18553414298598s"
--                                   animation-delay: "2.16284s"
--                                   animation-duration: "12.0797s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "28.807955367078797%"
--                                   left: "31.8474%"
-+                                   top: "0.9836152248765995%"
--                                   top: "85.2171%"
-+                                   animationDelay: "0.012092170412098535s"
-+                                   animationDuration: "9.296342655550376s"
--                                   animation-delay: "4.83508s"
--                                   animation-duration: "12.9628s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "21.613792805529165%"
--                                   left: "61.7867%"
-+                                   top: "65.64608750153327%"
--                                   top: "97.0515%"
-+                                   animationDelay: "1.7646949109938022s"
-+                                   animationDuration: "10.158478572721474s"
--                                   animation-delay: "4.57111s"
--                                   animation-duration: "8.35603s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "55.091027326981234%"
--                                   left: "98.9988%"
-+                                   top: "79.33109710293665%"
--                                   top: "44.5268%"
-+                                   animationDelay: "3.346825794485318s"
-+                                   animationDuration: "9.499704928541238s"
--                                   animation-delay: "0.0909236s"
--                                   animation-duration: "8.81864s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "8.349356670349762%"
--                                   left: "76.5252%"
-+                                   top: "71.81415342324526%"
--                                   top: "56.4116%"
-+                                   animationDelay: "3.234142677548183s"
-+                                   animationDuration: "14.59847081434542s"
--                                   animation-delay: "2.38428s"
--                                   animation-duration: "9.44707s"
-                                  }}
-                                >
-                                <div
-                                  className="absolute w-1 h-1 bg-trade-accent/30 rounded-full animate-float"
-                                  style={{
-+                                   left: "33.29238915260922%"
--                                   left: "85.934%"
-+                                   top: "10.394021593955138%"
--                                   top: "52.7512%"
-+                                   animationDelay: "3.4027867801383636s"
-+                                   animationDuration: "11.879789851335314s"
--                                   animation-delay: "0.392211s"
--                                   animation-duration: "13.67s"
-                                  }}
-                                >
-                              <div>
-                              <div className="relative z...">
-                                <div>
-                                <h1>
-                                <p>
-                                <div>
-                                <div>
-                                <div className="flex flex-...">
-                                  <button>
-+                                 <button
-+                                   onClick={function handleResumeGame}
-+                                   className="group flex items-center justify-center gap-3 w-full py-4  bg-trade-card..."
-+                                 >
-                                ...
-                          ...
-                  ...
-                ...
-
-[00:01:36.012] Server  LOG     ✓ Compiled in 569ms
-[00:02:05.668] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:24.855] Server  LOG     ✓ Compiled in 28ms
+[00:00:11.786] Server  WARN    ⚠ Cross origin request detected from 192.168.0.190 to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:11.822] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:19.825] Server  ERROR   [auth][error] InvalidCheck: pkceCodeVerifier value could not be parsed. Read more at https://errors.authjs.dev#invalidcheck
+[00:00:19.826] Server  ERROR       at parseCookie (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3312:15)
+    at Object.use (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3340:30)
+    at handleOAuth (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3570:218)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Module.callback (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:4085:41)
+    at async AuthInternal (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:5123:24)
+    at async Auth (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:5370:34)
+    at async AppRouteRouteModule.do (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:5:37866)
+    at async AppRouteRouteModule.handle (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:5:45156)
+    at async responseGenerator (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16647:38)
+    at async AppRouteRouteModule.handleResponse (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:1:187713)
+    at async handleResponse (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16710:32)
+    at async Module.handler (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16763:13)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1422:9)
+    at async DevServer.renderPageComponent (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1474:24)
+    at async DevServer.renderToResponseImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1524:32)
+    at async DevServer.pipeImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1018:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/next-server.js:395:17)
+    at async DevServer.handleRequestImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:909:17)
+    at async /Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/dev/next-dev-server.js:387:20
+    at async Span.traceAsyncFn (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/trace/trace.js:157:20)
+    at async DevServer.handleRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/dev/next-dev-server.js:383:24)
+    at async invokeRender (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:248:21)
+    at async handleRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:447:24)
+    at async requestHandlerImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:496:13)
+    at async Server.requestListener (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/start-server.js:226:13)
+[00:00:30.482] Server  ERROR   [auth][error] InvalidCheck: pkceCodeVerifier value could not be parsed. Read more at https://errors.authjs.dev#invalidcheck
+[00:00:30.483] Server  ERROR       at parseCookie (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3312:15)
+    at Object.use (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3340:30)
+    at handleOAuth (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3570:218)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Module.callback (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:4085:41)
+    at async AuthInternal (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:5123:24)
+    at async Auth (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:5370:34)
+    at async AppRouteRouteModule.do (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:5:37866)
+    at async AppRouteRouteModule.handle (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:5:45156)
+    at async responseGenerator (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16647:38)
+    at async AppRouteRouteModule.handleResponse (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:1:187713)
+    at async handleResponse (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16710:32)
+    at async Module.handler (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16763:13)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1422:9)
+    at async DevServer.renderPageComponent (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1474:24)
+    at async DevServer.renderToResponseImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1524:32)
+    at async DevServer.pipeImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1018:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/next-server.js:395:17)
+    at async DevServer.handleRequestImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:909:17)
+    at async /Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/dev/next-dev-server.js:387:20
+    at async Span.traceAsyncFn (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/trace/trace.js:157:20)
+    at async DevServer.handleRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/dev/next-dev-server.js:383:24)
+    at async invokeRender (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:248:21)
+    at async handleRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:447:24)
+    at async requestHandlerImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:496:13)
+    at async Server.requestListener (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/start-server.js:226:13)
+[00:00:42.817] Server  ERROR   [auth][error] InvalidCheck: pkceCodeVerifier value could not be parsed. Read more at https://errors.authjs.dev#invalidcheck
+[00:00:42.818] Server  ERROR       at parseCookie (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3312:15)
+    at Object.use (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3340:30)
+    at handleOAuth (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:3570:218)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async Module.callback (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:4085:41)
+    at async AuthInternal (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:5123:24)
+    at async Auth (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_@auth_core_83efb00c._.js:5370:34)
+    at async AppRouteRouteModule.do (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:5:37866)
+    at async AppRouteRouteModule.handle (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:5:45156)
+    at async responseGenerator (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16647:38)
+    at async AppRouteRouteModule.handleResponse (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/compiled/next-server/app-route-turbo.runtime.dev.js:1:187713)
+    at async handleResponse (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16710:32)
+    at async Module.handler (/Users/nayburrahman/Downloads/TradeOn/web/.next/dev/server/chunks/node_modules_next_417193d9._.js:16763:13)
+    at async DevServer.renderToResponseWithComponentsImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1422:9)
+    at async DevServer.renderPageComponent (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1474:24)
+    at async DevServer.renderToResponseImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1524:32)
+    at async DevServer.pipeImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:1018:25)
+    at async NextNodeServer.handleCatchallRenderRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/next-server.js:395:17)
+    at async DevServer.handleRequestImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/base-server.js:909:17)
+    at async /Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/dev/next-dev-server.js:387:20
+    at async Span.traceAsyncFn (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/trace/trace.js:157:20)
+    at async DevServer.handleRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/dev/next-dev-server.js:383:24)
+    at async invokeRender (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:248:21)
+    at async handleRequest (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:447:24)
+    at async requestHandlerImpl (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/router-server.js:496:13)
+    at async Server.requestListener (/Users/nayburrahman/Downloads/TradeOn/web/node_modules/next/dist/server/lib/start-server.js:226:13)
+[00:00:47.071] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:19.336] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[00:01:19.344] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[00:06:45.054] Browser LOG     Market Insider Predictions: {}
+[00:06:57.652] Browser LOG     Market Insider Predictions: {}
+[00:07:48.824] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017
+[00:07:48.838] Server  ERROR   Error getting/creating player: MongoServerSelectionError: connect ECONNREFUSED ::1:27017, connect ECONNREFUSED 127.0.0.1:27017

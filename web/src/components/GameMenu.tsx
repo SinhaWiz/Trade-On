@@ -2,14 +2,40 @@
 
 import { useState } from 'react';
 import { useGameStore } from '@/lib/gameStore';
+import { usePlayerStore } from '@/lib/playerStore';
 import { Menu, X, Save, LogOut, RotateCcw, HelpCircle } from 'lucide-react';
 
 export default function GameMenu() {
   const [isOpen, setIsOpen] = useState(false);
-  const { saveGame, quitToTitle, startNewGame, turnsRemaining, player } = useGameStore();
+  const [isSaving, setIsSaving] = useState(false);
+  const { saveGame: localSave, quitToTitle, startNewGame, turnsRemaining, player, getGameStateForSave, addNotification } = useGameStore();
+  const { profile, saveGame, currentSaveId, updateSave } = usePlayerStore();
 
-  const handleSave = () => {
-    saveGame();
+  const handleSave = async () => {
+    if (!profile) {
+      // Fall back to local save for demo users
+      localSave();
+      setIsOpen(false);
+      return;
+    }
+
+    setIsSaving(true);
+    try {
+      const gameState = getGameStateForSave();
+      
+      if (currentSaveId) {
+        // Update existing save
+        await updateSave(currentSaveId, gameState);
+        addNotification('success', '💾 Game saved successfully!');
+      } else {
+        // Create new save
+        await saveGame(profile.email, profile.id, gameState);
+        addNotification('success', '💾 Game saved to your profile!');
+      }
+    } catch (error) {
+      addNotification('error', 'Failed to save game');
+    }
+    setIsSaving(false);
     setIsOpen(false);
   };
 
@@ -77,11 +103,13 @@ export default function GameMenu() {
             <div className="p-4 space-y-2">
               <button
                 onClick={handleSave}
+                disabled={isSaving}
                 className="w-full flex items-center gap-3 px-4 py-3 rounded-xl bg-trade-dark border border-trade-border
-                  hover:border-trade-green hover:bg-trade-green/10 text-gray-300 hover:text-trade-green transition-all"
+                  hover:border-trade-green hover:bg-trade-green/10 text-gray-300 hover:text-trade-green transition-all
+                  disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <Save className="w-5 h-5" />
-                <span className="font-medium">Save Game</span>
+                <span className="font-medium">{isSaving ? 'Saving...' : 'Save Game'}</span>
               </button>
 
               <button

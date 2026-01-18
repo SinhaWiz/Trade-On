@@ -12,6 +12,7 @@ import {
   MAX_TURNS, 
   INITIAL_BALANCE 
 } from './types';
+import { SavedGameState } from './playerTypes';
 import { simulateMarketMovement, predictNextMovements, incrementVolatility } from './market';
 import { calcGainLoss, generateTradeId, validateTrade, shouldLiquidate } from './trade';
 
@@ -35,6 +36,9 @@ interface GameStore extends GameState {
   resumeGame: () => void;
   quitToTitle: () => void;
   hasSavedGame: () => boolean;
+  // New: Load from MongoDB save
+  loadFromSave: (gameState: SavedGameState) => void;
+  getGameStateForSave: () => SavedGameState;
 }
 
 const initializeCoins = (): Coin[] => {
@@ -344,6 +348,34 @@ export const useGameStore = create<GameStore>()(
         const state = get();
         // Check if there's meaningful progress (not at initial state)
         return state.turnsRemaining < MAX_TURNS || state.positions.length > 0 || state.player.balance !== INITIAL_BALANCE;
+      },
+
+      loadFromSave: (gameState: SavedGameState) => {
+        set({
+          player: {
+            balance: gameState.player.balance,
+            portfolio: new Map(),
+          },
+          coins: gameState.coins,
+          positions: gameState.positions,
+          turnsRemaining: gameState.turnsRemaining,
+          marketInsiderAttempts: gameState.marketInsiderAttempts,
+          isGameOver: false,
+          isGameStarted: true,
+          notifications: [],
+        });
+        get().addNotification('info', '🎮 Game loaded! Welcome back, trader.');
+      },
+
+      getGameStateForSave: (): SavedGameState => {
+        const { player, coins, positions, turnsRemaining, marketInsiderAttempts } = get();
+        return {
+          player: { balance: player.balance },
+          coins,
+          positions,
+          turnsRemaining,
+          marketInsiderAttempts,
+        };
       },
     }),
     {

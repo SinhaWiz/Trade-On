@@ -11,7 +11,7 @@ import PriceChart from '@/components/PriceChart';
 import Notifications from '@/components/Notifications';
 import ActionPanel from '@/components/ActionPanel';
 import GameOverModal from '@/components/GameOverModal';
-import TitleScreen from '@/components/TitleScreen';
+import PlayerMenu from '@/components/PlayerMenu';
 import GameMenu from '@/components/GameMenu';
 import { useGameStore } from '@/lib/gameStore';
 
@@ -26,20 +26,25 @@ interface GameClientProps {
 export default function GameClient({ user: serverUser }: GameClientProps) {
   const [selectedCoin, setSelectedCoin] = useState<Coin | null>(null);
   const [user, setUser] = useState(serverUser);
-  const { isGameStarted } = useGameStore();
+  const { isGameStarted, resetGame } = useGameStore();
   const router = useRouter();
 
-  // Check for demo user on mount
+  // Check for demo user on mount and reset game state
   useEffect(() => {
     if (!serverUser) {
       const demoUser = localStorage.getItem('demo-user');
       if (demoUser) {
         setUser(JSON.parse(demoUser));
+        // Reset game to show player menu
+        resetGame();
       } else {
         router.push('/login');
       }
+    } else {
+      // Reset game state for authenticated users to show player menu
+      resetGame();
     }
-  }, [serverUser, router]);
+  }, [serverUser, router, resetGame]);
 
   // Show loading state while checking authentication
   if (!user) {
@@ -55,8 +60,8 @@ export default function GameClient({ user: serverUser }: GameClientProps) {
 
   return (
     <main className="min-h-screen bg-trade-dark">
-      {/* Title Screen Overlay */}
-      <TitleScreen user={user} />
+      {/* Player Menu - Shows when game is not started */}
+      {!isGameStarted && <PlayerMenu user={user} />}
       
       {/* Game Over Modal */}
       <GameOverModal />

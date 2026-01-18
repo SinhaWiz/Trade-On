@@ -1,14 +1,17 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useGameStore } from '@/lib/gameStore';
+import { usePlayerStore } from '@/lib/playerStore';
 import { formatCurrency } from '@/lib/utils';
 import { calcGainLoss } from '@/lib/trade';
-import { Trophy, TrendingUp, RotateCcw, Target, Skull, Crown } from 'lucide-react';
+import { Trophy, RotateCcw, Target, Skull, Crown, Home } from 'lucide-react';
+import { MAX_TURNS } from '@/lib/types';
 
 export default function GameOverModal() {
-  const { isGameOver, player, positions, startNewGame } = useGameStore();
-
-  if (!isGameOver) return null;
+  const { isGameOver, player, positions, turnsRemaining, startNewGame, resetGame } = useGameStore();
+  const { profile, recordGameEnd } = usePlayerStore();
+  const hasRecorded = useRef(false);
 
   // Close all positions and calculate final balance
   const totalPositionValue = positions.reduce((acc, pos) => {
@@ -22,6 +25,28 @@ export default function GameOverModal() {
   const profit = finalBalance - initialBalance;
   const profitPercent = (profit / initialBalance) * 100;
   const isWinner = finalBalance >= initialBalance;
+  const turnsUsed = MAX_TURNS - turnsRemaining;
+
+  // Record game end when modal appears
+  useEffect(() => {
+    if (isGameOver && profile && !hasRecorded.current) {
+      hasRecorded.current = true;
+      recordGameEnd(profile.email, profile.id, finalBalance, turnsUsed);
+    }
+  }, [isGameOver, profile, finalBalance, turnsUsed, recordGameEnd]);
+
+  // Reset the recorded flag when game is not over
+  useEffect(() => {
+    if (!isGameOver) {
+      hasRecorded.current = false;
+    }
+  }, [isGameOver]);
+
+  if (!isGameOver) return null;
+
+  const handleBackToMenu = () => {
+    resetGame();
+  };
 
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
@@ -93,7 +118,7 @@ export default function GameOverModal() {
         </div>
 
         {/* Actions */}
-        <div className="p-6 pt-0">
+        <div className="p-6 pt-0 space-y-3">
           <button
             onClick={startNewGame}
             className="w-full py-4 bg-trade-accent hover:bg-trade-accent/80 text-white rounded-xl 
@@ -101,6 +126,14 @@ export default function GameOverModal() {
           >
             <RotateCcw className="w-5 h-5" />
             Play Again
+          </button>
+          <button
+            onClick={handleBackToMenu}
+            className="w-full py-3 bg-trade-dark hover:bg-trade-dark/80 text-gray-300 rounded-xl 
+              font-medium transition-all flex items-center justify-center gap-2 border border-trade-border"
+          >
+            <Home className="w-5 h-5" />
+            Back to Menu
           </button>
         </div>
       </div>
