@@ -1,0 +1,11 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/auth/[...nextauth]/route": "/api/auth/[...nextauth]",
+  "/api/leaderboard/route": "/api/leaderboard",
+  "/api/player/route": "/api/player",
+  "/api/records/route": "/api/records",
+  "/api/saves/route": "/api/saves",
+  "/login/page": "/login",
+  "/page": "/"
+}

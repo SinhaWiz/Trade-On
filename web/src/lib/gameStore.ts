@@ -380,7 +380,7 @@ export const useGameStore = create<GameStore>()(
     }),
     {
       name: 'trade-on-game',
-      partialize: (state: GameState) => ({
+      partialize: (state) => ({
         player: state.player,
         coins: state.coins,
         positions: state.positions,
