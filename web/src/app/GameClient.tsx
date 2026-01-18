@@ -105,14 +105,11 @@ export default function GameClient({ user: serverUser }: GameClientProps) {
             {/* Positions */}
             <PositionsPanel />
 
-            {/* Charts - Side by Side */}
-            <div className="grid grid-cols-2 gap-6">
-              {/* Selected Coin Chart */}
-              <PriceChart coin={selectedCoin} />
-              
-              {/* All Coins Chart */}
-              <AllCoinsChart />
-            </div>
+            {/* Selected Coin Chart */}
+            <PriceChart coin={selectedCoin} />
+            
+            {/* All Coins Chart */}
+            <AllCoinsChart />
           </div>
 
           {/* Right Column - Trade Panel & Actions */}
