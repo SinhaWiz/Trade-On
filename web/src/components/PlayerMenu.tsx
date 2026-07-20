@@ -122,9 +122,9 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
     <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0a0b12]">
       {/* ===== Animated background ===== */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-violet-600/15 rounded-full blur-[120px] animate-drift" />
-        <div className="absolute bottom-[0%] right-[10%] w-[420px] h-[420px] bg-purple-500/10 rounded-full blur-[120px] animate-drift-slow" />
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
+        <div className="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-trade-accent/15 rounded-full blur-[120px] animate-drift" />
+        <div className="absolute bottom-[0%] right-[10%] w-[420px] h-[420px] bg-blue-500/10 rounded-full blur-[120px] animate-drift-slow" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(88,166,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(88,166,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-5">
@@ -132,7 +132,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
         <nav className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl px-3 py-2.5 mb-6">
           <div className="flex items-center gap-3">
             {/* Logo */}
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/30">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-trade-accent to-blue-600 flex items-center justify-center shadow-lg shadow-trade-accent/30">
               <TrendingUp className="w-5 h-5 text-white" />
             </div>
             {/* Tabs */}
@@ -167,9 +167,9 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
             {/* Profile pill */}
             <div className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 pl-1 pr-3 py-1">
               {user.image ? (
-                <img src={user.image} alt="Profile" className="w-8 h-8 rounded-full border border-violet-400/50" />
+                <img src={user.image} alt="Profile" className="w-8 h-8 rounded-full border border-trade-accent/50" />
               ) : (
-                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-trade-accent to-blue-600 flex items-center justify-center">
                   <User className="w-4 h-4 text-white" />
                 </div>
               )}
@@ -192,7 +192,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
 
         {isLoading ? (
           <div className="flex items-center justify-center py-32">
-            <div className="w-14 h-14 border-4 border-violet-500 border-t-transparent rounded-full animate-spin" />
+            <div className="w-14 h-14 border-4 border-trade-accent border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
           <div id="overview" className="space-y-6">
@@ -200,15 +200,15 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Big account card */}
               <div className="lg:col-span-2 relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6">
-                <div className="absolute -top-20 -right-16 w-64 h-64 bg-violet-600/20 rounded-full blur-[90px] pointer-events-none" />
+                <div className="absolute -top-20 -right-16 w-64 h-64 bg-trade-accent/20 rounded-full blur-[90px] pointer-events-none" />
                 <div className="relative">
                   {/* Header */}
                   <div className="flex items-start justify-between flex-wrap gap-4">
                     <div className="flex items-center gap-4">
                       {user.image ? (
-                        <img src={user.image} alt="Profile" className="w-14 h-14 rounded-2xl border border-violet-400/50" />
+                        <img src={user.image} alt="Profile" className="w-14 h-14 rounded-2xl border border-trade-accent/50" />
                       ) : (
-                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/30">
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-trade-accent to-blue-600 flex items-center justify-center shadow-lg shadow-trade-accent/30">
                           <User className="w-7 h-7 text-white" />
                         </div>
                       )}
@@ -218,7 +218,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-3 py-2">
-                      <Trophy className="w-4 h-4 text-violet-300" />
+                      <Trophy className="w-4 h-4 text-trade-accent" />
                       <span className="text-sm font-medium text-white">Rank #{leaderboard.findIndex(e => e.playerEmail === user.email) + 1 || '—'}</span>
                     </div>
                   </div>
@@ -247,14 +247,14 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
               </div>
 
               {/* Action / start card */}
-              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-violet-600/20 to-white/[0.02] p-6 flex flex-col">
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-trade-accent/20 to-white/[0.02] p-6 flex flex-col">
                 <div className="flex items-center gap-2 text-sm text-gray-300">
-                  <Rocket className="w-4 h-4 text-violet-300" />
+                  <Rocket className="w-4 h-4 text-trade-accent" />
                   Ready to Trade?
                 </div>
 
                 <div className="flex-1 flex items-center justify-center py-6">
-                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-violet-500/40 animate-glow">
+                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-trade-accent to-blue-600 flex items-center justify-center shadow-2xl shadow-trade-accent/40 animate-glow">
                     <TrendingUp className="w-14 h-14 text-white" />
                   </div>
                 </div>
@@ -266,7 +266,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
 
                 <button
                   onClick={handleStartNewGame}
-                  className="group w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 text-white font-semibold shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  className="group w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-trade-accent to-blue-600 text-white font-semibold shadow-lg shadow-trade-accent/30 hover:shadow-trade-accent/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Play className="w-5 h-5" />
                   Start New Game
@@ -277,8 +277,8 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
             {/* ===== Stat cards ===== */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {/* Best Score - highlighted */}
-              <div className="relative overflow-hidden rounded-2xl border border-violet-400/30 bg-gradient-to-br from-violet-600/40 to-purple-700/20 p-5">
-                <div className="flex items-center gap-2 text-violet-100 mb-4">
+              <div className="relative overflow-hidden rounded-2xl border border-trade-accent/30 bg-gradient-to-br from-trade-accent/40 to-blue-700/20 p-5">
+                <div className="flex items-center gap-2 text-blue-100 mb-4">
                   <span className="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center">
                     <Award className="w-4 h-4" />
                   </span>
@@ -314,7 +314,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
             {/* ===== Detail panels ===== */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {/* Saved Games */}
-              <Panel id="saved" icon={<FolderOpen className="w-4 h-4 text-violet-300" />} title="Saved Games">
+              <Panel id="saved" icon={<FolderOpen className="w-4 h-4 text-trade-accent" />} title="Saved Games">
                 {savedGames.length === 0 ? (
                   <EmptyState icon={<FolderOpen className="w-10 h-10" />} title="No saved games yet" subtitle="Start a game and save your progress" />
                 ) : (
@@ -323,10 +323,10 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                       <div
                         key={save.id}
                         onClick={() => handleLoadGame(save)}
-                        className="group rounded-xl border border-white/10 bg-white/[0.02] p-4 hover:border-violet-400/40 hover:bg-white/[0.05] transition-all cursor-pointer"
+                        className="group rounded-xl border border-white/10 bg-white/[0.02] p-4 hover:border-trade-accent/40 hover:bg-white/[0.05] transition-all cursor-pointer"
                       >
                         <div className="flex items-start justify-between mb-2">
-                          <span className="font-medium text-white group-hover:text-violet-300 transition-colors">{save.name}</span>
+                          <span className="font-medium text-white group-hover:text-trade-accent transition-colors">{save.name}</span>
                           <div className="flex items-center gap-1">
                             <button
                               onClick={(e) => handleDeleteSave(save.id, e)}
@@ -334,7 +334,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                             >
                               <Trash2 className="w-4 h-4" />
                             </button>
-                            <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-violet-300 transition-colors" />
+                            <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-trade-accent transition-colors" />
                           </div>
                         </div>
                         <div className="flex items-center gap-4 text-sm">
@@ -390,7 +390,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                         key={`${entry.playerEmail}-${index}`}
                         className={`flex items-center gap-3 p-3 rounded-xl ${
                           entry.playerEmail === user.email
-                            ? 'bg-violet-500/10 border border-violet-400/30'
+                            ? 'bg-trade-accent/10 border border-trade-accent/30'
                             : 'bg-white/[0.02] border border-white/5'
                         }`}
                       >
@@ -403,7 +403,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                           {entry.rank}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className={`font-medium truncate ${entry.playerEmail === user.email ? 'text-violet-300' : 'text-white'}`}>
+                          <p className={`font-medium truncate ${entry.playerEmail === user.email ? 'text-trade-accent' : 'text-white'}`}>
                             {entry.playerName}
                             {entry.playerEmail === user.email && ' (You)'}
                           </p>
@@ -427,7 +427,7 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
 function DetailChip({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
   return (
     <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
-      <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-violet-300">{icon}</span>
+      <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-trade-accent">{icon}</span>
       <div className="leading-tight">
         <p className="text-[11px] text-gray-500">{label}</p>
         <p className="text-sm font-semibold text-white">{value}</p>
@@ -440,7 +440,7 @@ function FieldBox({ label, value, accent }: { label: string; value: string; acce
   return (
     <div className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
       <p className="text-[11px] text-gray-500 mb-0.5">{label}</p>
-      <p className={`text-sm font-medium truncate ${accent ? 'text-violet-300' : 'text-white'}`}>{value}</p>
+      <p className={`text-sm font-medium truncate ${accent ? 'text-trade-accent' : 'text-white'}`}>{value}</p>
     </div>
   );
 }
@@ -459,7 +459,7 @@ function StatCard({
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
       <div className="flex items-center gap-2 text-gray-400 mb-4">
-        <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-violet-300">{icon}</span>
+        <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-trade-accent">{icon}</span>
         <span className="text-sm font-medium">{label}</span>
       </div>
       <p className={`text-2xl font-bold ${valueClass}`}>{value}</p>
