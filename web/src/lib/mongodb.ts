@@ -46,5 +46,5 @@ export default clientPromise;
 
 export async function getDatabase(): Promise<Db> {
   const client = await clientPromise;
-  return client.db('tradeon');
+  return client.db(process.env.MONGODB_DB || 'trade_on');
 }
