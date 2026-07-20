@@ -4,21 +4,27 @@ import { useEffect } from 'react';
 import { usePlayerStore } from '@/lib/playerStore';
 import { useGameStore } from '@/lib/gameStore';
 import { SavedGame } from '@/lib/playerTypes';
-import { 
-  Play, 
-  FolderOpen, 
-  Trophy, 
-  TrendingUp, 
-  Clock, 
-  DollarSign, 
-  Target,
+import {
+  Play,
+  FolderOpen,
+  Trophy,
+  TrendingUp,
+  Clock,
+  DollarSign,
   Trash2,
   User,
   LogOut,
-  Sparkles,
   Skull,
   Award,
-  BarChart2
+  Wallet,
+  Activity,
+  Bell,
+  Settings,
+  Search,
+  ChevronDown,
+  ArrowUpRight,
+  CalendarDays,
+  Rocket,
 } from 'lucide-react';
 import { signOut } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -33,18 +39,18 @@ interface PlayerMenuProps {
 
 export default function PlayerMenu({ user }: PlayerMenuProps) {
   const router = useRouter();
-  const { 
-    profile, 
-    savedGames, 
+  const {
+    profile,
+    savedGames,
     gameHistory,
     leaderboard,
-    isLoading, 
+    isLoading,
     loadProfile,
     deleteSave,
   } = usePlayerStore();
-  
-  const { 
-    startNewGame, 
+
+  const {
+    startNewGame,
     loadFromSave,
     isGameStarted,
   } = useGameStore();
@@ -56,7 +62,6 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
   }, [user.email, user.name, user.image, loadProfile]);
 
   const handleSignOut = () => {
-    // Clear all stored data
     localStorage.removeItem('demo-user');
     localStorage.removeItem('trade-on-game');
     signOut({ callbackUrl: '/login' });
@@ -99,162 +104,238 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
 
   if (isGameStarted) return null;
 
+  const stats = profile?.stats;
+  const gamesPlayed = stats?.gamesPlayed || 0;
+  const gamesWon = stats?.gamesWon || 0;
+  const gamesLost = stats?.gamesLost || 0;
+  const winRate = gamesPlayed > 0 ? Math.round((gamesWon / gamesPlayed) * 100) : 0;
+  const displayName = profile?.name || user.name || 'Trader';
+
+  const navTabs = [
+    { label: 'Account Overview', href: '#overview', active: true },
+    { label: 'Saved Games', href: '#saved', active: false },
+    { label: 'History', href: '#history', active: false },
+    { label: 'Leaderboard', href: '#leaderboard', active: false },
+  ];
+
   return (
-    <div className="fixed inset-0 bg-trade-dark z-50 overflow-y-auto">
-      {/* Animated Background */}
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-[#0a0b12]">
+      {/* ===== Animated background ===== */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-trade-accent/15 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/15 rounded-full blur-[100px] animate-pulse-slow" />
-        <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-trade-green/10 rounded-full blur-[80px] animate-pulse" />
+        <div className="absolute top-[-10%] left-[15%] w-[500px] h-[500px] bg-violet-600/15 rounded-full blur-[120px] animate-drift" />
+        <div className="absolute bottom-[0%] right-[10%] w-[420px] h-[420px] bg-purple-500/10 rounded-full blur-[120px] animate-drift-slow" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(139,92,246,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(139,92,246,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
       </div>
 
-      {/* Header with user info */}
-      <div className="relative z-10 border-b border-trade-border bg-trade-card/50 backdrop-blur-sm">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="w-14 h-14 bg-gradient-to-br from-trade-accent via-purple-500 to-trade-green rounded-2xl 
-              flex items-center justify-center shadow-lg shadow-trade-accent/30">
-              <TrendingUp className="w-7 h-7 text-white" />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-5">
+        {/* ===== Top navigation bar ===== */}
+        <nav className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-xl px-3 py-2.5 mb-6">
+          <div className="flex items-center gap-3">
+            {/* Logo */}
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/30">
+              <TrendingUp className="w-5 h-5 text-white" />
             </div>
-            <div>
-              <h1 className="text-2xl font-bold text-white">
-                Trade-<span className="bg-gradient-to-r from-trade-accent to-purple-500 bg-clip-text text-transparent">On</span>
-              </h1>
-              <p className="text-sm text-gray-400">Cryptocurrency Trading Simulator</p>
+            {/* Tabs */}
+            <div className="hidden md:flex items-center gap-1">
+              {navTabs.map((tab) => (
+                <a
+                  key={tab.label}
+                  href={tab.href}
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+                    tab.active
+                      ? 'bg-white/10 text-white'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {tab.label}
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="text-right mr-2">
-              <p className="font-medium text-white">{profile?.name || user.name || 'Trader'}</p>
-              <p className="text-xs text-gray-400">{user.email}</p>
-            </div>
-            {user.image ? (
-              <img src={user.image} alt="Profile" className="w-12 h-12 rounded-full border-2 border-trade-accent" />
-            ) : (
-              <div className="w-12 h-12 rounded-full bg-trade-accent flex items-center justify-center">
-                <User className="w-6 h-6 text-white" />
+          <div className="flex items-center gap-2">
+            <button className="hidden sm:flex w-10 h-10 rounded-full bg-white/5 border border-white/10 items-center justify-center text-gray-400 hover:text-white transition-colors">
+              <Search className="w-4 h-4" />
+            </button>
+            <button className="hidden sm:flex w-10 h-10 rounded-full bg-white/5 border border-white/10 items-center justify-center text-gray-400 hover:text-white transition-colors">
+              <Bell className="w-4 h-4" />
+            </button>
+            <button className="hidden sm:flex w-10 h-10 rounded-full bg-white/5 border border-white/10 items-center justify-center text-gray-400 hover:text-white transition-colors">
+              <Settings className="w-4 h-4" />
+            </button>
+
+            {/* Profile pill */}
+            <div className="flex items-center gap-2 rounded-full bg-white/5 border border-white/10 pl-1 pr-3 py-1">
+              {user.image ? (
+                <img src={user.image} alt="Profile" className="w-8 h-8 rounded-full border border-violet-400/50" />
+              ) : (
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                  <User className="w-4 h-4 text-white" />
+                </div>
+              )}
+              <div className="hidden sm:block text-left leading-tight">
+                <p className="text-sm font-medium text-white">{displayName}</p>
+                <p className="text-[11px] text-gray-500 max-w-[140px] truncate">{user.email}</p>
               </div>
-            )}
+              <ChevronDown className="hidden sm:block w-4 h-4 text-gray-500" />
+            </div>
+
             <button
               onClick={handleSignOut}
-              className="p-3 rounded-xl hover:bg-trade-red/20 text-gray-400 hover:text-trade-red transition-all"
               title="Sign Out"
+              className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-red-400 hover:border-red-400/40 transition-all"
             >
-              <LogOut className="w-5 h-5" />
+              <LogOut className="w-4 h-4" />
             </button>
           </div>
-        </div>
-      </div>
+        </nav>
 
-      {/* Main Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-8">
         {isLoading ? (
-          <div className="flex items-center justify-center py-20">
-            <div className="w-16 h-16 border-4 border-trade-accent border-t-transparent rounded-full animate-spin"></div>
+          <div className="flex items-center justify-center py-32">
+            <div className="w-14 h-14 border-4 border-violet-500 border-t-transparent rounded-full animate-spin" />
           </div>
         ) : (
-          <div className="grid grid-cols-12 gap-6">
-            {/* Left Column - Stats & Actions */}
-            <div className="col-span-4 space-y-6">
-              {/* Player Stats Card */}
-              <div className="bg-trade-card/60 backdrop-blur-sm border border-trade-border rounded-2xl p-6">
-                <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                  <BarChart2 className="w-5 h-5 text-trade-accent" />
-                  Your Stats
-                </h2>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Games Played</span>
-                    <span className="text-white font-medium">{profile?.stats.gamesPlayed || 0}</span>
+          <div id="overview" className="space-y-6">
+            {/* ===== Account card + action card ===== */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Big account card */}
+              <div className="lg:col-span-2 relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6">
+                <div className="absolute -top-20 -right-16 w-64 h-64 bg-violet-600/20 rounded-full blur-[90px] pointer-events-none" />
+                <div className="relative">
+                  {/* Header */}
+                  <div className="flex items-start justify-between flex-wrap gap-4">
+                    <div className="flex items-center gap-4">
+                      {user.image ? (
+                        <img src={user.image} alt="Profile" className="w-14 h-14 rounded-2xl border border-violet-400/50" />
+                      ) : (
+                        <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg shadow-violet-500/30">
+                          <User className="w-7 h-7 text-white" />
+                        </div>
+                      )}
+                      <div>
+                        <h1 className="text-2xl font-bold text-white">{displayName}</h1>
+                        <p className="text-sm text-gray-400">Cryptocurrency Trading Simulator</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-2 rounded-xl bg-white/5 border border-white/10 px-3 py-2">
+                      <Trophy className="w-4 h-4 text-violet-300" />
+                      <span className="text-sm font-medium text-white">Rank #{leaderboard.findIndex(e => e.playerEmail === user.email) + 1 || '—'}</span>
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Wins / Losses</span>
-                    <span className="text-white font-medium">
-                      <span className="text-trade-green">{profile?.stats.gamesWon || 0}</span>
-                      {' / '}
-                      <span className="text-trade-red">{profile?.stats.gamesLost || 0}</span>
-                    </span>
+
+                  {/* Detail chips */}
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-6">
+                    <DetailChip icon={<Wallet className="w-4 h-4" />} label="Initial Balance" value="$1,000,000" />
+                    <DetailChip icon={<Clock className="w-4 h-4" />} label="Turns / Game" value="160" />
+                    <DetailChip icon={<Activity className="w-4 h-4" />} label="Account Type" value="Simulation" />
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Best Score</span>
-                    <span className="text-trade-green font-medium">
-                      {formatCurrency(profile?.stats.bestScore || 0)}
-                    </span>
+
+                  {/* Divider */}
+                  <div className="my-6 h-px bg-white/10" />
+
+                  {/* Account details */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <span className="text-sm font-semibold text-white">Account details</span>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-400">Total Profit</span>
-                    <span className={`font-medium ${(profile?.stats.totalProfit || 0) >= 0 ? 'text-trade-green' : 'text-trade-red'}`}>
-                      {formatCurrency(profile?.stats.totalProfit || 0)}
-                    </span>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <FieldBox label="Email" value={user.email || '—'} />
+                    <FieldBox label="Member Since" value={profile?.createdAt ? new Date(profile.createdAt).toLocaleDateString() : '—'} />
+                    <FieldBox label="Best Score" value={formatCurrency(stats?.bestScore || 0)} accent />
+                    <FieldBox label="Win Rate" value={`${winRate}%`} accent />
                   </div>
                 </div>
               </div>
 
-              {/* Story Card */}
-              <div className="bg-trade-card/60 backdrop-blur-sm border border-trade-border rounded-2xl p-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-trade-red/20 to-orange-500/20 rounded-xl flex items-center justify-center flex-shrink-0 border border-trade-red/30">
-                    <Skull className="w-6 h-6 text-trade-red" />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-white mb-2">The Stakes</h3>
-                    <p className="text-sm text-gray-400 leading-relaxed">
-                      Borrow <span className="text-trade-green font-bold">$1,000,000</span> from a loan shark. 
-                      Pay it back in <span className="text-yellow-400 font-bold">160 turns</span> or face the consequences...
-                    </p>
+              {/* Action / start card */}
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-b from-violet-600/20 to-white/[0.02] p-6 flex flex-col">
+                <div className="flex items-center gap-2 text-sm text-gray-300">
+                  <Rocket className="w-4 h-4 text-violet-300" />
+                  Ready to Trade?
+                </div>
+
+                <div className="flex-1 flex items-center justify-center py-6">
+                  <div className="w-28 h-28 rounded-full bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-2xl shadow-violet-500/40 animate-glow">
+                    <TrendingUp className="w-14 h-14 text-white" />
                   </div>
                 </div>
-              </div>
 
-              {/* Action Buttons */}
-              <div className="space-y-3">
+                <p className="text-center text-sm text-gray-400 mb-4">
+                  Borrow <span className="text-emerald-400 font-semibold">$1,000,000</span> and turn it into a fortune in{' '}
+                  <span className="text-yellow-400 font-semibold">160 turns</span>.
+                </p>
+
                 <button
                   onClick={handleStartNewGame}
-                  className="w-full flex items-center justify-center gap-3 py-4 
-                    bg-gradient-to-r from-trade-accent to-purple-500 text-white font-bold text-lg 
-                    rounded-xl shadow-lg shadow-trade-accent/30 hover:shadow-trade-accent/50 
-                    transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                  className="group w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-gradient-to-r from-violet-500 to-purple-600 text-white font-semibold shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <Play className="w-6 h-6" />
+                  <Play className="w-5 h-5" />
                   Start New Game
                 </button>
               </div>
             </div>
 
-            {/* Middle Column - Saved Games */}
-            <div className="col-span-4 space-y-6">
-              <div className="bg-trade-card/60 backdrop-blur-sm border border-trade-border rounded-2xl p-6">
-                <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                  <FolderOpen className="w-5 h-5 text-purple-400" />
-                  Saved Games
-                </h2>
-                
+            {/* ===== Stat cards ===== */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Best Score - highlighted */}
+              <div className="relative overflow-hidden rounded-2xl border border-violet-400/30 bg-gradient-to-br from-violet-600/40 to-purple-700/20 p-5">
+                <div className="flex items-center gap-2 text-violet-100 mb-4">
+                  <span className="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center">
+                    <Award className="w-4 h-4" />
+                  </span>
+                  <span className="text-sm font-medium">Best Score</span>
+                </div>
+                <p className="text-2xl font-bold text-white">{formatCurrency(stats?.bestScore || 0)}</p>
+              </div>
+
+              <StatCard
+                icon={<TrendingUp className="w-4 h-4" />}
+                label="Total Profit"
+                value={formatCurrency(stats?.totalProfit || 0)}
+                valueClass={(stats?.totalProfit || 0) >= 0 ? 'text-emerald-400' : 'text-red-400'}
+              />
+              <StatCard
+                icon={<Trophy className="w-4 h-4" />}
+                label="Wins / Losses"
+                value={
+                  <>
+                    <span className="text-emerald-400">{gamesWon}</span>
+                    <span className="text-gray-500"> / </span>
+                    <span className="text-red-400">{gamesLost}</span>
+                  </>
+                }
+              />
+              <StatCard
+                icon={<Activity className="w-4 h-4" />}
+                label="Games Played"
+                value={gamesPlayed}
+              />
+            </div>
+
+            {/* ===== Detail panels ===== */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Saved Games */}
+              <Panel id="saved" icon={<FolderOpen className="w-4 h-4 text-violet-300" />} title="Saved Games">
                 {savedGames.length === 0 ? (
-                  <div className="text-center py-8">
-                    <FolderOpen className="w-12 h-12 text-gray-600 mx-auto mb-3" />
-                    <p className="text-gray-500">No saved games yet</p>
-                    <p className="text-sm text-gray-600">Start a new game and save your progress</p>
-                  </div>
+                  <EmptyState icon={<FolderOpen className="w-10 h-10" />} title="No saved games yet" subtitle="Start a game and save your progress" />
                 ) : (
-                  <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2">
+                  <div className="space-y-3 max-h-[340px] overflow-y-auto pr-1">
                     {savedGames.map((save) => (
                       <div
                         key={save.id}
                         onClick={() => handleLoadGame(save)}
-                        className="w-full bg-trade-dark/50 border border-trade-border/50 rounded-xl p-4 
-                          hover:border-purple-500/50 hover:bg-trade-dark/70 transition-all group text-left cursor-pointer"
+                        className="group rounded-xl border border-white/10 bg-white/[0.02] p-4 hover:border-violet-400/40 hover:bg-white/[0.05] transition-all cursor-pointer"
                       >
                         <div className="flex items-start justify-between mb-2">
-                          <span className="font-medium text-white group-hover:text-purple-400 transition-colors">
-                            {save.name}
-                          </span>
-                          <button
-                            onClick={(e) => handleDeleteSave(save.id, e)}
-                            className="p-1.5 rounded-lg hover:bg-trade-red/20 text-gray-500 hover:text-trade-red transition-all opacity-0 group-hover:opacity-100"
-                          >
-                            <Trash2 className="w-4 h-4" />
-                          </button>
+                          <span className="font-medium text-white group-hover:text-violet-300 transition-colors">{save.name}</span>
+                          <div className="flex items-center gap-1">
+                            <button
+                              onClick={(e) => handleDeleteSave(save.id, e)}
+                              className="p-1.5 rounded-lg hover:bg-red-500/20 text-gray-500 hover:text-red-400 transition-all opacity-0 group-hover:opacity-100"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                            <ArrowUpRight className="w-4 h-4 text-gray-600 group-hover:text-violet-300 transition-colors" />
+                          </div>
                         </div>
                         <div className="flex items-center gap-4 text-sm">
                           <span className="text-gray-400 flex items-center gap-1">
@@ -266,107 +347,154 @@ export default function PlayerMenu({ user }: PlayerMenuProps) {
                             {save.gameState.turnsRemaining} turns left
                           </span>
                         </div>
-                        <p className="text-xs text-gray-500 mt-2">
-                          {formatDate(save.updatedAt)}
-                        </p>
+                        <p className="text-xs text-gray-600 mt-2">{formatDate(save.updatedAt)}</p>
                       </div>
                     ))}
                   </div>
                 )}
-              </div>
+              </Panel>
 
-              {/* Game History */}
-              <div className="bg-trade-card/60 backdrop-blur-sm border border-trade-border rounded-2xl p-6">
-                <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-yellow-400" />
-                  Recent Games
-                </h2>
-                
+              {/* Recent Games */}
+              <Panel id="history" icon={<CalendarDays className="w-4 h-4 text-yellow-400" />} title="Recent Games">
                 {gameHistory.length === 0 ? (
-                  <div className="text-center py-6">
-                    <Target className="w-10 h-10 text-gray-600 mx-auto mb-2" />
-                    <p className="text-gray-500 text-sm">No completed games yet</p>
-                  </div>
+                  <EmptyState icon={<Clock className="w-10 h-10" />} title="No completed games yet" subtitle="Finish a game to see it here" />
                 ) : (
-                  <div className="space-y-2 max-h-[200px] overflow-y-auto">
-                    {gameHistory.slice(0, 5).map((record) => (
-                      <div
-                        key={record.id}
-                        className="flex items-center justify-between py-2 border-b border-trade-border/30 last:border-0"
-                      >
+                  <div className="space-y-1 max-h-[340px] overflow-y-auto pr-1">
+                    {gameHistory.slice(0, 8).map((record) => (
+                      <div key={record.id} className="flex items-center justify-between py-3 border-b border-white/5 last:border-0">
                         <div className="flex items-center gap-2">
                           {record.won ? (
                             <Trophy className="w-4 h-4 text-yellow-400" />
                           ) : (
-                            <Skull className="w-4 h-4 text-trade-red" />
+                            <Skull className="w-4 h-4 text-red-400" />
                           )}
-                          <span className={`text-sm font-medium ${record.won ? 'text-trade-green' : 'text-trade-red'}`}>
+                          <span className={`text-sm font-medium ${record.won ? 'text-emerald-400' : 'text-red-400'}`}>
                             {formatCurrency(record.finalBalance)}
                           </span>
                         </div>
-                        <span className="text-xs text-gray-500">
-                          {new Date(record.completedAt).toLocaleDateString()}
-                        </span>
+                        <span className="text-xs text-gray-600">{new Date(record.completedAt).toLocaleDateString()}</span>
                       </div>
                     ))}
                   </div>
                 )}
-              </div>
-            </div>
+              </Panel>
 
-            {/* Right Column - Leaderboard */}
-            <div className="col-span-4">
-              <div className="bg-trade-card/60 backdrop-blur-sm border border-trade-border rounded-2xl p-6">
-                <h2 className="text-lg font-semibold text-white mb-4 flex items-center gap-2">
-                  <Trophy className="w-5 h-5 text-yellow-400" />
-                  Leaderboard
-                </h2>
-                
+              {/* Leaderboard */}
+              <Panel id="leaderboard" icon={<Trophy className="w-4 h-4 text-yellow-400" />} title="Leaderboard">
                 {leaderboard.length === 0 ? (
-                  <div className="text-center py-8">
-                    <Award className="w-12 h-12 text-gray-600 mx-auto mb-3" />
-                    <p className="text-gray-500">No scores yet</p>
-                    <p className="text-sm text-gray-600">Be the first to complete a game!</p>
-                  </div>
+                  <EmptyState icon={<Award className="w-10 h-10" />} title="No scores yet" subtitle="Be the first to complete a game!" />
                 ) : (
-                  <div className="space-y-2">
+                  <div className="space-y-2 max-h-[340px] overflow-y-auto pr-1">
                     {leaderboard.map((entry, index) => (
                       <div
                         key={`${entry.playerEmail}-${index}`}
                         className={`flex items-center gap-3 p-3 rounded-xl ${
-                          entry.playerEmail === user.email 
-                            ? 'bg-trade-accent/10 border border-trade-accent/30' 
-                            : 'bg-trade-dark/30'
+                          entry.playerEmail === user.email
+                            ? 'bg-violet-500/10 border border-violet-400/30'
+                            : 'bg-white/[0.02] border border-white/5'
                         }`}
                       >
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-sm ${
                           index === 0 ? 'bg-yellow-500/20 text-yellow-400' :
                           index === 1 ? 'bg-gray-400/20 text-gray-300' :
                           index === 2 ? 'bg-orange-500/20 text-orange-400' :
-                          'bg-trade-dark/50 text-gray-500'
+                          'bg-white/5 text-gray-500'
                         }`}>
                           {entry.rank}
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className={`font-medium truncate ${
-                            entry.playerEmail === user.email ? 'text-trade-accent' : 'text-white'
-                          }`}>
+                          <p className={`font-medium truncate ${entry.playerEmail === user.email ? 'text-violet-300' : 'text-white'}`}>
                             {entry.playerName}
                             {entry.playerEmail === user.email && ' (You)'}
                           </p>
                         </div>
-                        <span className="text-trade-green font-semibold text-sm">
-                          {formatCurrency(entry.score)}
-                        </span>
+                        <span className="text-emerald-400 font-semibold text-sm">{formatCurrency(entry.score)}</span>
                       </div>
                     ))}
                   </div>
                 )}
-              </div>
+              </Panel>
             </div>
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+/* ===== Small presentational helpers ===== */
+
+function DetailChip({ icon, label, value }: { icon: React.ReactNode; label: string; value: string }) {
+  return (
+    <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2.5">
+      <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-violet-300">{icon}</span>
+      <div className="leading-tight">
+        <p className="text-[11px] text-gray-500">{label}</p>
+        <p className="text-sm font-semibold text-white">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+function FieldBox({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
+  return (
+    <div className="rounded-xl border border-white/10 bg-white/[0.02] px-4 py-3">
+      <p className="text-[11px] text-gray-500 mb-0.5">{label}</p>
+      <p className={`text-sm font-medium truncate ${accent ? 'text-violet-300' : 'text-white'}`}>{value}</p>
+    </div>
+  );
+}
+
+function StatCard({
+  icon,
+  label,
+  value,
+  valueClass = 'text-white',
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: React.ReactNode;
+  valueClass?: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+      <div className="flex items-center gap-2 text-gray-400 mb-4">
+        <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-violet-300">{icon}</span>
+        <span className="text-sm font-medium">{label}</span>
+      </div>
+      <p className={`text-2xl font-bold ${valueClass}`}>{value}</p>
+    </div>
+  );
+}
+
+function Panel({
+  id,
+  icon,
+  title,
+  children,
+}: {
+  id?: string;
+  icon: React.ReactNode;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div id={id} className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+      <div className="flex items-center gap-2 mb-4">
+        <span className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center">{icon}</span>
+        <h2 className="text-base font-semibold text-white">{title}</h2>
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function EmptyState({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
+  return (
+    <div className="text-center py-10">
+      <div className="text-gray-700 mx-auto mb-3 flex justify-center">{icon}</div>
+      <p className="text-gray-500">{title}</p>
+      <p className="text-sm text-gray-600">{subtitle}</p>
     </div>
   );
 }
