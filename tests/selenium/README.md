@@ -6,21 +6,23 @@ These tests exercise the deployed TradeOn app at:
 
 ## Install
 
+From `web/`:
+
 ```bash
-cd tests/selenium
-python3 -m pip install -r requirements.txt
+npm install selenium-webdriver
 ```
 
 ## Run
 
+From `web/`:
+
 ```bash
 TRADEON_BASE_URL=https://trade-on-phi.vercel.app \
-python3 -m unittest test_tradeon.py
+node --test ../tests/selenium/tradeon.test.js
 ```
 
 ## Notes
 
 - The suite uses Chrome via Selenium Manager.
 - The tests target the deployed site, so the app must be reachable from the machine running the browser.
-- OAuth is not completed end-to-end here; the suite focuses on the visible login, demo, gameplay, save, menu, and sign-out flows.
-
+- OAuth is not completed end-to-end here; the suite focuses on the visible login, demo, gameplay, save, menu, skip-turn, short-position, and sign-out flows.

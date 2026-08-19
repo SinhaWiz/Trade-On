@@ -1,0 +1,4 @@
+{
+  "spec": "tests/selenium/tradeon.test.js",
+  "timeout": 120000
+}
