@@ -7,8 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test:selenium": "node --test ../tests/selenium/tradeon.test.js",
-    "test:selenium:headed": "SELENIUM_HEADLESS=0 node --test ../tests/selenium/tradeon.test.js"
+    "test:selenium": "npx mocha ../tests/selenium/tradeon.test.js",
+    "test:selenium:headed": "npx mocha ../tests/selenium/tradeon.test.js",
+    "test:selenium:edge": "SELENIUM_BROWSER=edge npx mocha ../tests/selenium/tradeon.test.js",
+    "test:selenium:edge:headed": "SELENIUM_BROWSER=edge npx mocha ../tests/selenium/tradeon.test.js"
   },
   "dependencies": {
     "lucide-react": "^0.378.0",

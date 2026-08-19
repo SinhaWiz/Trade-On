@@ -1,10 +1,11 @@
-const assert = require('node:assert/strict');
 const { Builder, By, until } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
+const edge = require('selenium-webdriver/edge');
 
 const BASE_URL = (process.env.TRADEON_BASE_URL || 'https://trade-on-phi.vercel.app').replace(/\/$/, '');
 const LOGIN_URL = `${BASE_URL}/login`;
 const DEFAULT_TIMEOUT = 25000;
+const BROWSER = (process.env.SELENIUM_BROWSER || 'edge').toLowerCase();
 
 const DEFAULT_COINS = [
   { name: 'Bitcoin', ticker: 'BTC', price: 50000, possiblePositiveTrend: false, possibleNegativeTrend: false },
@@ -42,8 +43,26 @@ function xpathLiteral(value) {
 }
 
 async function buildDriver() {
-  const options = new chrome.Options();
-  if (process.env.SELENIUM_HEADLESS !== '0') {
+  const headless = process.env.SELENIUM_HEADLESS === '1';
+
+  if (BROWSER === 'chrome') {
+    const options = new chrome.Options();
+    if (headless) {
+      options.addArguments('--headless=new');
+    }
+    options.addArguments('--window-size=1440,1600');
+    options.addArguments('--disable-gpu');
+    options.addArguments('--no-sandbox');
+    options.addArguments('--disable-dev-shm-usage');
+
+    return new Builder()
+      .forBrowser('chrome')
+      .setChromeOptions(options)
+      .build();
+  }
+
+  const options = new edge.Options();
+  if (headless) {
     options.addArguments('--headless=new');
   }
   options.addArguments('--window-size=1440,1600');
@@ -52,8 +71,8 @@ async function buildDriver() {
   options.addArguments('--disable-dev-shm-usage');
 
   return new Builder()
-    .forBrowser('chrome')
-    .setChromeOptions(options)
+    .forBrowser('MicrosoftEdge')
+    .setEdgeOptions(options)
     .build();
 }
 
