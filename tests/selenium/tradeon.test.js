@@ -179,6 +179,14 @@ describe('TradeOn Selenium', function () {
       await clickText('Open LONG Position');
       await pauseForViewer();
       await waitForText('Open Positions');
+
+      const closePositionButton = await waitForVisibleXPath(
+        "//div[.//h2[normalize-space()='Open Positions']]//button[not(normalize-space()='Close All')][1]"
+      );
+      await closePositionButton.click();
+      await pauseForViewer();
+      await waitForText('No open positions');
+      await pauseForViewer();
     } catch (error) {
       await dumpPageSnapshot('walkthrough-failed');
       throw error;
